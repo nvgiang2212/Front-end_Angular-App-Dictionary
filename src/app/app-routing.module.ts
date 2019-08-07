@@ -1,11 +1,28 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {DictionaryPageComponent} from './dictionary-page/dictionary-page.component';
+import {DictionaryDetailComponent} from './dictionary-detail/dictionary-detail.component';
+import {DictionaryComponent} from './dictionary/dictionary.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [{
+  path: 'dictionary',
+  component: DictionaryPageComponent,
+  children: [
+    {
+      path: ':key',
+      component: DictionaryDetailComponent
+    }
+  ]
+}, {
+  path: 'dictionary-search',
+  component: DictionaryComponent
+}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
